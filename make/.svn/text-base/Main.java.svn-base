@@ -1,0 +1,132 @@
+package make;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
+import java.util.HashMap;
+
+/** Initial class for the 'make' program.
+ *  @author Darwin Li
+ */
+public final class Main {
+
+    /** Entry point for the CS61B make program.  ARGS may contain options
+     *  and targets:
+     *      [ -f MAKEFILE ] [ -D FILEINFO ] TARGET1 TARGET2 ...
+     */
+    public static void main(String... args) {
+        String makefileName;
+        String fileInfoName;
+        nameToDate = new HashMap<String, Integer>();
+        int currDate;
+
+        if (args.length == 0) {
+            usage();
+        }
+
+        makefileName = "Makefile";
+        fileInfoName = "fileinfo";
+
+        int a;
+        for (a = 0; a < args.length; a += 1) {
+            if (args[a].equals("-f")) {
+                a += 1;
+                if (a == args.length) {
+                    usage();
+                } else {
+                    makefileName = args[a];
+                }
+            } else if (args[a].equals("-D")) {
+                a += 1;
+                if (a == args.length) {
+                    usage();
+                } else {
+                    fileInfoName = args[a];
+                }
+            } else if (args[a].startsWith("-")) {
+                usage();
+            } else {
+                break;
+            }
+        }
+
+        ArrayList<String> targets = new ArrayList<String>();
+
+        Scanner fileInfoScanner = new Scanner(new File(fileInfoName));
+        currDate = infoScanner.nextInt();
+
+        for (; a < args.length; a += 1) {
+            targets.add(args[a]);
+        }
+
+        make(makefileName, fileInfoName, targets);
+    }
+
+    /** Carry out the make procedure using MAKEFILENAME as the makefile,
+     *  taking information on the current file-system state from FILEINFONAME,
+     *  and building TARGETS, or the first target in the makefile if TARGETS
+     *  is empty.
+     */
+    private static void make(String makefileName, String fileInfoName,
+                             List<String> targets) {
+        Scanner _inp = new Scanner(new File(makeFileinfo));
+        _inp.useDelimiter(" ");
+    }
+
+
+    /** Parse the TARGET according to FILEINFONAME.*/
+    private static void readFileInfoName(String fileinfoname, ArrayList<String> target) {
+
+    }
+
+    /** Parse the TARGET according to MAKEFILENAME.*/
+    private static void readMakeFileName(String makefilename, ArrayList<String> target) {
+        
+    }
+
+    /** Print a brief usage message and exit program abnormally. */
+    private static void usage() {
+        printHelpResource(HELP, System.out);
+        System.exit(1);
+    }
+
+
+
+
+    /** Name of resource containing help message. */
+    private static final String HELP = "make/Help.txt";
+
+    /** Print the contents of the resource named NAME on OUT.
+     *  NAME will typically be a file name based in one of the directories
+     *  in the class path.  */
+    static void printHelpResource(String name, PrintWriter out) {
+        try {
+            InputStream resource =
+                Main.class.getClassLoader().getResourceAsStream(name);
+            BufferedReader str =
+                new BufferedReader(new InputStreamReader(resource));
+            for (String s = str.readLine(); s != null; s = str.readLine())  {
+                out.println(s);
+            }
+            str.close();
+            out.flush();
+        } catch (IOException excp) {
+            out.printf("No help found.");
+            out.flush();
+        }
+    }
+
+    /** Function that creates the rule list from TARGETS.*/
+    void ruleListMaker(ArrayList<String> targets) {
+        for (int i = 0; i < targets.size(); i += 1)
+            
+    }
+
+    /** A hashmap that goes from Strings to Integers.*/
+    HashMap<String, Integer> nameToDate;
+
+    /** An arraylist of Rules.*/
+    ArrayList<Rules> RuleList;
+
+
+}

@@ -1,0 +1,16 @@
+package make;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
+
+/** The clas that handles the Rules for the make.
+ *  @author Darwin Li
+ */
+public class Rule {
+
+
+	public class Rule(ArrayList<String> target) {
+
+	}
+}
